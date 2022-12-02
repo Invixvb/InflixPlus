@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0bc882791d61741b999797d826e1ef, type: 3}
+  m_Name: Slide 7
+  m_EditorClassIdentifier: 
+  level: 1
+  themeListIndex: 0
+  slideType: 3
+  header: Feedback
+  footer: "Stel, een collega kwam vandaag flink te laat binnen bij een\r\noverleg
+    waar haar inbreng gewenst was. Ze\r\nverontschuldigde zich, maar toen jij vroeg
+    wat er gebeurd\r\nwas reageerde ze fel:\u201D Ga jij me nou controleren? Je bent\r\nmijn
+    baas niet!\u201D.\r\nJe hebt het erbij gelaten, maar haar reactie zit je niet
+    lekker\r\nen je besluit haar daarom feedback te geven. Niet op het te\r\nlaat
+    komen, maar op haar felle reactie."
+  assignmentTime: 0
+  timeIsChangeableByPlayerCount: 0
+  backgroundImage: {fileID: 21300000, guid: 8c98d0f5c80017e4da5032703fc4ad1f, type: 3}
+  headerImage: {fileID: 0}
+  audioFragment: {fileID: 0}
+  footerBackgroundImage: {fileID: 21300000, guid: 61b6e32079b78964aae323a05fe9f7c0, type: 3}
+  timerBackgroundImage: {fileID: 21300000, guid: 0d50180ec6dae8a4d91fe2f7b4f03f73, type: 3}
+  previousButtonImage: {fileID: 21300000, guid: 709088a738a1ccb4395cab5fcc02abc0, type: 3}
+  nextButtonImage: {fileID: 21300000, guid: dc28d13faae82b54abce2e59d8ebbb40, type: 3}

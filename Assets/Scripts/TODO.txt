@@ -1,0 +1,19 @@
+﻿Later:
+- Tutorial + Documentation
+- Keeping the selected button in options selected
+- Logo van de ScriptableObjects veranderen.
+- Alle content erin plaatsen met header images
+- Adding colour changes to text when its another theme
+- Audio player/controller
+- Animaties tussen slides
+- Tooltips voor ScriptableObjects en het menu
+- Toevoegen button waarbij je gelijk de image kan selecteren uit een panel
+- Code cleanup en optimizations
+- Als je op de eerste slide bent en je klikt op terug. Dat je dan terug naar het main menu scherm gaat.
+- Clean maken van Updaten static theme list
+- Fix audio listener and event system duplication when loading scenes.
+- Automatic scaling van alle UI, Images pakken scale van sprite aan, Anchors etc.
+- Header Image size scaler
+- DataToGameLoader If the list is out of range/on the last index then put it onto the EndScreen slide. But not if out of range on i.e. -1
+- Zorgen dat wanneer Unity opstart de volgorde word opgeslagen van thema/opdracht & Met renamen van themas opletten dat dat niet word aangepast. Maybe met een variable die bijhoud waar die SO in de list staat
+- Dynamic time: Berekening maken met het aantal spelers dat meedoen, aantal totale minuten van het thema, en hoeveel opdrachten er in die list zitten.
