@@ -6,40 +6,20 @@ public class SceneController : MonoBehaviour
     private AsyncOperation _asyncOperation;
     private Scene _currentScene;
     private string _sceneName;
-    
-    #region Singleton pattern
-    private static SceneController _instance;
-    public static SceneController Instance
-    {
-        get 
-        {
-            if (!_instance)
-                _instance = FindObjectOfType<SceneController>();
-            return _instance;
-        }
-    }
-    #endregion
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.B))
-            ResetPrefs();
-    }
-
-    private static void ResetPrefs() => PlayerPrefs.DeleteAll();
-
-    public void ExitGame() => Application.Quit();
+    /// <summary>
+    /// Load MainScene when Intro is done playing
+    /// </summary>
+    private void LoadMainScene() => AsyncLoadScene("MainScene");
 
     /// <summary>
     /// Here we load our scene we need async to the other scene that has already been active.
     /// When this is done we execute an AsyncOperation.
     /// </summary>
     /// <param name="sceneName"></param>
-    public void AsyncLoadScene(string sceneName)
+    private void AsyncLoadScene(string sceneName)
     {
         _sceneName = sceneName;
-
-        PlayerPrefs.Save();
 
         _currentScene = SceneManager.GetActiveScene();
 
