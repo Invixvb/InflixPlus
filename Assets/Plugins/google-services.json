@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "784933729880",
+    "project_id": "inflixplus",
+    "storage_bucket": "inflixplus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784933729880:android:a5df51571e0decdf027c2d",
+        "android_client_info": {
+          "package_name": "com.InvixStudios.InflixPlus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784933729880-ub1lva44i3hmsvc5laf1so4knq5t3skt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW4tKMmmYKY7tzroPDpViScdPDKdm2dak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784933729880-ub1lva44i3hmsvc5laf1so4knq5t3skt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
