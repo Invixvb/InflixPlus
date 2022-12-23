@@ -5,11 +5,8 @@ public class TempUploadPhoto : MonoBehaviour
 {
     public async void StartUpload()
     {
-        var image = GetComponent<Image>();
+        var image = GetComponent<Image>().sprite.texture;
 
-        var imageSprite = image.sprite;
-        var imageTexture = imageSprite.texture;
-
-        await MediaItemUploader.UploadMediaItem(new PhotoMediaItem(imageTexture));
+        await MediaItemUploader.UploadMediaItem(new MediaItemUploader.PhotoMediaItem(image));
     }
 }

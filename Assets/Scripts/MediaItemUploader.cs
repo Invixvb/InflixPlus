@@ -7,46 +7,10 @@ using Firebase.Storage;
 using Interfaces;
 using UnityEngine.Video;
 
-public class PhotoMediaItem : IMediaItem
-{
-    private readonly Texture2D _texture;
-
-    public PhotoMediaItem(Texture2D texture)
-    {
-        _texture = texture;
-    }
-
-    public MediaItemType Type => MediaItemType.Photo;
-
-    public string FileName => Guid.NewGuid().ToString();
-
-    public Task<byte[]> GetData()
-    {
-        return Task.FromResult(_texture.EncodeToPNG());
-    }
-}
-
-public class VideoMediaItem : IMediaItem
-{
-    private readonly VideoClip _videoClip;
-
-    public VideoMediaItem(VideoClip videoClip)
-    {
-        _videoClip = videoClip;
-    }
-
-    public MediaItemType Type => MediaItemType.Video;
-
-    public string FileName => Guid.NewGuid().ToString();
-
-    public async Task<byte[]> GetData()
-    {
-        return await File.ReadAllBytesAsync(_videoClip.originalPath);
-    }
-}
-
 public static class MediaItemUploader
 {
+    private static readonly FirebaseStorage Storage = FirebaseStorage.DefaultInstance;
+    
     /// <summary>
     /// Upload a media item to the cloud to store it.
     /// </summary>
@@ -55,11 +19,8 @@ public static class MediaItemUploader
     {
         try
         {
-            // Get the default Firebase Storage
-            var storage = FirebaseStorage.DefaultInstance;
-
             // Create a reference to the file in Firebase Storage
-            var mediaRef = storage.GetReference($"/{mediaItem.Type}s/{mediaItem.FileName}");
+            var mediaRef = Storage.GetReference($"/{mediaItem.Type}s/{mediaItem.FileName}");
 
             // Upload the media data
             await mediaRef.PutBytesAsync(await mediaItem.GetData());
@@ -71,6 +32,44 @@ public static class MediaItemUploader
         {
             // If there's an error while upload the media item, we display it here
             Debug.LogError($"Error uploading media item: {e.Message}");
+        }
+    }
+    
+    public class PhotoMediaItem : IMediaItem
+    {
+        private readonly Texture2D _texture;
+
+        public PhotoMediaItem(Texture2D texture)
+        {
+            _texture = texture;
+        }
+
+        public MediaItemType Type => MediaItemType.Photo;
+
+        public string FileName => Guid.NewGuid().ToString();
+
+        public Task<byte[]> GetData()
+        {
+            return Task.FromResult(_texture.EncodeToPNG());
+        }
+    }
+
+    public class VideoMediaItem : IMediaItem
+    {
+        private readonly VideoClip _videoClip;
+
+        public VideoMediaItem(VideoClip videoClip)
+        {
+            _videoClip = videoClip;
+        }
+
+        public MediaItemType Type => MediaItemType.Video;
+
+        public string FileName => Guid.NewGuid().ToString();
+
+        public async Task<byte[]> GetData()
+        {
+            return await File.ReadAllBytesAsync(_videoClip.originalPath);
         }
     }
 }

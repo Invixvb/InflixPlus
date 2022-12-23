@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class TempUploadVideo : MonoBehaviour
@@ -8,6 +7,6 @@ public class TempUploadVideo : MonoBehaviour
     {
         var video = GetComponent<VideoPlayer>().clip;
 
-        await MediaItemUploader.UploadMediaItem(new VideoMediaItem(video));
+        await MediaItemUploader.UploadMediaItem(new MediaItemUploader.VideoMediaItem(video));
     }
 }
