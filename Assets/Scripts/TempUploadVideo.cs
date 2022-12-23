@@ -8,6 +8,6 @@ public class TempUploadVideo : MonoBehaviour
     {
         var video = GetComponent<VideoPlayer>().clip;
 
-        await MediaItemUploader.UploadMediaItem(video);
+        await MediaItemUploader.UploadMediaItem(new VideoMediaItem(video));
     }
 }

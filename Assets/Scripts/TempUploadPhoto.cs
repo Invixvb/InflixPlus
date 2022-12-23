@@ -10,6 +10,6 @@ public class TempUploadPhoto : MonoBehaviour
         var imageSprite = image.sprite;
         var imageTexture = imageSprite.texture;
 
-        await MediaItemUploader.UploadMediaItem(imageTexture);
+        await MediaItemUploader.UploadMediaItem(new PhotoMediaItem(imageTexture));
     }
 }
