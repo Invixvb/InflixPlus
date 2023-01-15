@@ -1,4 +1,5 @@
 using System;
+using Firebase.Storage;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -12,6 +13,8 @@ namespace ScriptableObjects
         public DateTime lenght;
         public DateTime storedLenght;
         
+        public StorageReference storageReference;
+
         public int fileSize;
 
         public Vector2 resolutionSize;

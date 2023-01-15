@@ -9,21 +9,23 @@ using UnityEngine.Video;
 
 public static class MediaItemUploader
 {
-    private static readonly FirebaseStorage Storage = FirebaseStorage.DefaultInstance;
+    public static readonly FirebaseStorage Storage = FirebaseStorage.DefaultInstance;
+
+    private static StorageReference _storageReference;
     
     /// <summary>
     /// Upload a media item to the cloud to store it.
     /// </summary>
-    /// <param name="mediaItem">The item to upload</param>
+    /// <param name="mediaItem">The item to upload.</param>
     public static async Task UploadMediaItem(IMediaItem mediaItem)
     {
         try
         {
             // Create a reference to the file in Firebase Storage
-            var mediaRef = Storage.GetReference($"/{mediaItem.Type}s/{mediaItem.FileName}");
+            _storageReference = Storage.GetReference($"/{mediaItem.Type}s/{mediaItem.FileName}");
 
             // Upload the media data
-            await mediaRef.PutBytesAsync(await mediaItem.GetData());
+            await _storageReference.PutBytesAsync(await mediaItem.GetData());
 
             // Log a message when the upload is complete
             Debug.Log("Media item uploaded successfully");
@@ -48,6 +50,8 @@ public static class MediaItemUploader
 
         public string FileName => Guid.NewGuid().ToString();
 
+        public StorageReference ReferenceLink => _storageReference;
+
         public Task<byte[]> GetData()
         {
             return Task.FromResult(_texture.EncodeToPNG());
@@ -66,6 +70,8 @@ public static class MediaItemUploader
         public MediaItemType Type => MediaItemType.Video;
 
         public string FileName => Guid.NewGuid().ToString();
+
+        public StorageReference ReferenceLink => _storageReference;
 
         public async Task<byte[]> GetData()
         {

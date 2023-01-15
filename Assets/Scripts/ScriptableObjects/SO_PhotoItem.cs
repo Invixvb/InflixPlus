@@ -1,4 +1,5 @@
 using System;
+using Firebase.Storage;
 using UnityEngine;
 
 namespace ScriptableObjects
@@ -9,6 +10,8 @@ namespace ScriptableObjects
         public string location;
         
         public DateTime date;
+
+        public StorageReference storageReference;
         
         public int fileSize;
 

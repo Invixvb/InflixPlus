@@ -1,0 +1,17 @@
+﻿Add error handling for the case where the video file does not exist or is not accessible. Currently, if the _videoClip.originalPath property is invalid or the file is not found, the File.ReadAllBytesAsync method will throw an exception. It would be a good idea to add some additional error handling to handle this case gracefully.
+
+Add a way to cancel the media item upload if it takes too long. Currently, if the upload takes a very long time, there is no way to cancel it. It would be a good idea to add a cancellation token to the UploadMediaItem method, so that the upload can be cancelled if necessary.
+
+Consider using asynchronous methods for reading and writing the media data, rather than using Task.FromResult and Task.Run. This will make the code more efficient and easier to read, as the asynchronous methods can be awaited directly.
+
+Consider using a dependency injection container to manage the dependencies of the MediaItemUploader class, rather than creating them directly. This will make the code more modular and easier to test.
+
+Consider refactoring the IMediaItem interface to separate the data fetching logic from the data type and file name. This will make it easier to reuse the IMediaItem interface for different types of media items, and will make the code more flexible and maintainable.
+
+Add unit tests to verify the correctness of the MediaItemUploader class and the IMediaItem interface. This will ensure that the code is reliable and behaves as expected, and will make it easier to make changes to the code in the future without breaking anything.
+
+Retry uploading media file
+
+More error checks
+
+Add Max File size
