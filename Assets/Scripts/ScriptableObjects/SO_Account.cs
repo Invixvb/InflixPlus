@@ -7,7 +7,7 @@ namespace ScriptableObjects
     public class SO_Account : ScriptableObject
     {
         public string userName;
-        public Texture2D userProfilePicture;
+        public Sprite userProfilePicture;
         
         public bool enabledPassword;
         public string password;
