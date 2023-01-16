@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b93b43bd7cc924eb73dcbbff781f55, type: 3}
+  m_Name: S0_MediaItem2 Photo
+  m_EditorClassIdentifier: 
+  currentMediaItemCount: 0
+  photoItemsList:
+  - {fileID: 11400000, guid: 8614e35f3a352d14997d7ea17deb90ff, type: 2}
+  - {fileID: 11400000, guid: a622a93ae3750594caca59623df0f93b, type: 2}
+  - {fileID: 11400000, guid: d021f9fb338a5154d9ae95df24962ddc, type: 2}
+  videoItemsList: []
