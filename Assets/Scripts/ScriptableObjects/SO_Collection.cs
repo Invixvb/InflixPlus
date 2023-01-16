@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace ScriptableObjects
 {
+    [CreateAssetMenu(fileName = "S0_Collection", menuName = "ScriptableObjects/Create SO_Collection", order = 2)]
     public class SO_Collection : ScriptableObject
     {
         public string title;

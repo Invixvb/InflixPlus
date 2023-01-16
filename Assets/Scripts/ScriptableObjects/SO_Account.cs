@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace ScriptableObjects
 {
+    [CreateAssetMenu(fileName = "S0_Account", menuName = "ScriptableObjects/Create SO_Account", order = 1)]
     public class SO_Account : ScriptableObject
     {
         public string userName;
