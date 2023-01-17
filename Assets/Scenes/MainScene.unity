@@ -34412,6 +34412,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 695459311}
+        m_TargetAssemblyTypeName: HomeScreenLoader, Assembly-CSharp
+        m_MethodName: LoadCurrentAccount
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 6af65f9b7d7f46847ba7abba041bae1e, type: 2}
+          m_ObjectArgumentAssemblyTypeName: ScriptableObjects.SO_Account, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 695459307}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -34431,18 +34443,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 695459311}
-        m_TargetAssemblyTypeName: HomeScreenLoader, Assembly-CSharp
-        m_MethodName: LoadCurrentAccount
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 6af65f9b7d7f46847ba7abba041bae1e, type: 2}
-          m_ObjectArgumentAssemblyTypeName: ScriptableObjects.SO_Account, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -34835,6 +34835,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 695459311}
+        m_TargetAssemblyTypeName: HomeScreenLoader, Assembly-CSharp
+        m_MethodName: LoadCurrentAccount
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: c1fa4c61373895e4d961900a61b64cd7, type: 2}
+          m_ObjectArgumentAssemblyTypeName: ScriptableObjects.SO_Account, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 695459307}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -34854,18 +34866,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 695459311}
-        m_TargetAssemblyTypeName: HomeScreenLoader, Assembly-CSharp
-        m_MethodName: LoadCurrentAccount
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c1fa4c61373895e4d961900a61b64cd7, type: 2}
-          m_ObjectArgumentAssemblyTypeName: ScriptableObjects.SO_Account, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -37220,6 +37220,7 @@ GameObject:
   - component: {fileID: 1978629157}
   - component: {fileID: 1978629159}
   - component: {fileID: 1978629158}
+  - component: {fileID: 1978629160}
   m_Layer: 5
   m_Name: Watchlist
   m_TagString: Untagged
@@ -37287,6 +37288,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978629156}
   m_CullTransparentMesh: 1
+--- !u!114 &1978629160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978629156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e12716ff1df3c64db24ed44d1749327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topBarAccountText: {fileID: 822715677}
+  buttonItemList:
+  - {fileID: 747129715}
+  - {fileID: 1836737707}
+  - {fileID: 1851375346}
+  - {fileID: 1372849309}
+  - {fileID: 1071319728}
 --- !u!1 &1982420727
 GameObject:
   m_ObjectHideFlags: 0
@@ -39844,6 +39864,7 @@ GameObject:
   - component: {fileID: 2088865852}
   - component: {fileID: 2088865854}
   - component: {fileID: 2088865853}
+  - component: {fileID: 2088865855}
   m_Layer: 5
   m_Name: Collections
   m_TagString: Untagged
@@ -39911,6 +39932,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088865851}
   m_CullTransparentMesh: 1
+--- !u!114 &2088865855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088865851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a5822cd0a1305458b96a3da7a8be95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topBarAccountText: {fileID: 2019239560}
+  buttonItemList:
+  - {fileID: 1564214294}
+  - {fileID: 587441736}
+  - {fileID: 2090947292}
 --- !u!1 &2090947292
 GameObject:
   m_ObjectHideFlags: 0

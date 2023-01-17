@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using Config;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using Random = UnityEngine.Random;
 
 public class HomeScreenLoader : MonoBehaviour
 {
@@ -38,16 +40,16 @@ public class HomeScreenLoader : MonoBehaviour
     private SO_Collection _featuredCollection;
 
     /// <summary>
+    /// Standard Unity Event.
     /// Current Account being loaded into the UI.
     /// </summary>
-    /// <param name="currentUser">User that has been clicked on.</param>
-    public void LoadCurrentAccount(SO_Account currentUser)
+    private void OnEnable()
     {
         // Set the top bar account text
-        topBarAccountText.text = currentUser.userName;
+        topBarAccountText.text = StaticConfig.PublicConfig.currentUser.userName;
 
         // Select a random collection from the user's collection list
-        _featuredCollection = currentUser.collectionsList[Random.Range(0, currentUser.collectionsList.Count)];
+        _featuredCollection = StaticConfig.PublicConfig.currentUser.collectionsList[Random.Range(0, StaticConfig.PublicConfig.currentUser.collectionsList.Count)];
 
         // Set the date, location, media item count, title, and description text
         dateText.text = _featuredCollection.year.ToString();
@@ -98,7 +100,8 @@ public class HomeScreenLoader : MonoBehaviour
             }
         }
 
-        foreach (var collection in currentUser.collectionsList.Where(c => c.startedWatching))
+        // Get the startedWatching collections for our Continue Watching Rect
+        foreach (var collection in StaticConfig.PublicConfig.currentUser.collectionsList.Where(c => c.startedWatching))
         {
             var selectedCollections = new List<SO_Collection> {collection};
             
@@ -113,7 +116,7 @@ public class HomeScreenLoader : MonoBehaviour
                     switch (child.name)
                     {
                         case "MaskedImage":
-                            _currentHeaderImage = currentUser.collectionsList[i].mediaItem.photoItemsList[0].texture;
+                            _currentHeaderImage = StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.photoItemsList[0].texture;
                             var currentHeaderSprite = Sprite.Create(_currentHeaderImage, new Rect(0, 0, _currentHeaderImage.width, _currentHeaderImage.height), Vector2.zero);
                             var targetImage = child.GetComponent<Image>();
                             targetImage.sprite = currentHeaderSprite;
@@ -121,24 +124,24 @@ public class HomeScreenLoader : MonoBehaviour
                             break;
                     
                         case "TitleText":
-                            _currentTitleText = currentUser.collectionsList[i].title;
+                            _currentTitleText = StaticConfig.PublicConfig.currentUser.collectionsList[i].title;
                             child.GetComponent<TextMeshProUGUI>().text = _currentTitleText;
                             break;
                     
                         case "ItemText":
-                            _currentItemText = $"Item {currentUser.collectionsList[i].mediaItem.currentMediaItemCount.ToString()}/{currentUser.collectionsList[i].mediaItem.MediaItemCount.ToString()}";
+                            _currentItemText = $"Item {StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.currentMediaItemCount.ToString()}/{StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.MediaItemCount.ToString()}";
                             child.GetComponent<TextMeshProUGUI>().text = _currentItemText;
                             break;
                     
                         case "Text":
-                            _currentDateText = currentUser.collectionsList[i].year.ToString();
+                            _currentDateText = StaticConfig.PublicConfig.currentUser.collectionsList[i].year.ToString();
                             child.GetComponent<TextMeshProUGUI>().text = _currentDateText;
                             break;
                     
                         case "ProgressSlider":
                             _currentSliderValue =
-                                currentUser.collectionsList[i].mediaItem.currentMediaItemCount /
-                                currentUser.collectionsList[i].mediaItem.MediaItemCount * 100;
+                                StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.currentMediaItemCount /
+                                StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.MediaItemCount * 100;
                             child.GetComponent<Slider>().value = _currentSliderValue;
                             break;
                     }
@@ -146,9 +149,14 @@ public class HomeScreenLoader : MonoBehaviour
             }
         }
 
-        for (var i = 0; i < currentUser.collectionsList.Count; i++)
+        // Get the normal collections for our Recommended Rect
+        for (var i = 0; i < StaticConfig.PublicConfig.currentUser.collectionsList.Count; i++)
         {
             var currentItem = recommendedList[i];
+            
+            //TODO: Fix this so we can just see the count of how many collections there are with photoItems in them. Instead of - 1
+            if (i >= StaticConfig.PublicConfig.currentUser.collectionsList.Count - 1)
+                return;
 
             var childrenObjectList = currentItem.GetComponentsInChildren<Transform>(true).Select(c => c.gameObject).ToList();
 
@@ -156,40 +164,43 @@ public class HomeScreenLoader : MonoBehaviour
             {
                 switch (child.name)
                 {
-                    case "MaskedImage":
-                        _currentHeaderImage = currentUser.collectionsList[i].mediaItem.photoItemsList[0].texture;
-                        var currentHeaderSprite = Sprite.Create(_currentHeaderImage, new Rect(0, 0, _currentHeaderImage.width, _currentHeaderImage.height), Vector2.zero);
-                        var targetImage = child.GetComponent<Image>();
-                        targetImage.sprite = currentHeaderSprite;
-                        targetImage.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(_currentHeaderImage.width, _currentHeaderImage.height);
-                        break;
-                    
                     case "TitleText":
-                        _currentTitleText = currentUser.collectionsList[i].title;
+                        _currentTitleText = StaticConfig.PublicConfig.currentUser.collectionsList[i].title;
                         child.GetComponent<TextMeshProUGUI>().text = _currentTitleText;
                         break;
-                    
+
                     case "ItemText":
-                        _currentItemText = $"Item {currentUser.collectionsList[i].mediaItem.currentMediaItemCount.ToString()}/{currentUser.collectionsList[i].mediaItem.MediaItemCount.ToString()}";
+                        _currentItemText =
+                            $"Item {StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.currentMediaItemCount.ToString()}/{StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.MediaItemCount.ToString()}";
                         child.GetComponent<TextMeshProUGUI>().text = _currentItemText;
                         break;
-                    
+
                     case "Text":
-                        _currentDateText = currentUser.collectionsList[i].year.ToString();
+                        _currentDateText = StaticConfig.PublicConfig.currentUser.collectionsList[i].year.ToString();
                         child.GetComponent<TextMeshProUGUI>().text = _currentDateText;
                         break;
-                    
+
                     case "ProgressSlider":
                         _currentSliderValue =
-                            currentUser.collectionsList[i].mediaItem.currentMediaItemCount /
-                            currentUser.collectionsList[i].mediaItem.MediaItemCount * 100;
+                            StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.currentMediaItemCount /
+                            StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.MediaItemCount * 100;
                         child.GetComponent<Slider>().value = _currentSliderValue;
+                        break;
+                    case "MaskedImage":
+                        _currentHeaderImage = StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.photoItemsList[0].texture;
+                        var currentHeaderSprite = Sprite.Create(_currentHeaderImage,
+                            new Rect(0, 0, _currentHeaderImage.width, _currentHeaderImage.height), Vector2.zero);
+                        var targetImage = child.GetComponent<Image>();
+                        targetImage.sprite = currentHeaderSprite;
+                        targetImage.gameObject.GetComponent<RectTransform>().sizeDelta =
+                            new Vector2(_currentHeaderImage.width, _currentHeaderImage.height);
                         break;
                 }
             }
         }
 
-        foreach (var collection in currentUser.collectionsList.Where(c => c.seenCollection))
+        // Get the seenCollections for our ReWatch Rect
+        foreach (var collection in StaticConfig.PublicConfig.currentUser.collectionsList.Where(c => c.seenCollection))
         {
             var selectedCollections = new List<SO_Collection> {collection};
 
@@ -204,7 +215,7 @@ public class HomeScreenLoader : MonoBehaviour
                     switch (child.name)
                     {
                         case "MaskedImage":
-                            _currentHeaderImage = currentUser.collectionsList[i].mediaItem.photoItemsList[0].texture;
+                            _currentHeaderImage = StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.photoItemsList[0].texture;
                             var currentHeaderSprite = Sprite.Create(_currentHeaderImage, new Rect(0, 0, _currentHeaderImage.width, _currentHeaderImage.height), Vector2.zero);
                             var targetImage = child.GetComponent<Image>();
                             targetImage.sprite = currentHeaderSprite;
@@ -212,22 +223,22 @@ public class HomeScreenLoader : MonoBehaviour
                             break;
 
                         case "TitleText":
-                            _currentTitleText = currentUser.collectionsList[i].title;
+                            _currentTitleText = StaticConfig.PublicConfig.currentUser.collectionsList[i].title;
                             child.GetComponent<TextMeshProUGUI>().text = _currentTitleText;
                             break;
 
                         case "ItemText":
-                            _currentItemText = $"Item {currentUser.collectionsList[i].mediaItem.currentMediaItemCount.ToString()}/{currentUser.collectionsList[i].mediaItem.MediaItemCount.ToString()}";
+                            _currentItemText = $"Item {StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.currentMediaItemCount.ToString()}/{StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.MediaItemCount.ToString()}";
                             child.GetComponent<TextMeshProUGUI>().text = _currentItemText;
                             break;
 
                         case "Text":
-                            _currentDateText = currentUser.collectionsList[i].year.ToString();
+                            _currentDateText = StaticConfig.PublicConfig.currentUser.collectionsList[i].year.ToString();
                             child.GetComponent<TextMeshProUGUI>().text = _currentDateText;
                             break;
 
                         case "ProgressSlider":
-                            _currentSliderValue = currentUser.collectionsList[i].mediaItem.currentMediaItemCount / currentUser.collectionsList[i].mediaItem.MediaItemCount * 100;
+                            _currentSliderValue = StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.currentMediaItemCount / StaticConfig.PublicConfig.currentUser.collectionsList[i].mediaItem.MediaItemCount * 100;
                             child.GetComponent<Slider>().value = _currentSliderValue;
                             break;
                     }
@@ -235,13 +246,20 @@ public class HomeScreenLoader : MonoBehaviour
             }
         }
     }
-    
-    //TODO: Actually open the CollectionScreen with the clicked Collection when we click a RectItem
 
     /// <summary>
+    /// Setting the Current User in context.
+    /// </summary>
+    public void LoadCurrentAccount(SO_Account currentUser)
+    {
+        StaticConfig.PublicConfig.currentUser = currentUser;
+    }
+
+    /// <summary>
+    /// Standard Unity Event.
     /// When we click the Account switching button we reset the values so we don't get old values.
     /// </summary>
-    public void ResetValues()
+    private void OnDisable()
     {
         topBarAccountText.text = "Person 1";
         _featuredCollection = null;
@@ -261,6 +279,9 @@ public class HomeScreenLoader : MonoBehaviour
         _currentSliderValue = 0;
     }
     
+    //TODO: Actually open the CollectionScreen with the clicked Collection when we click a RectItem
+    //TODO: When clicking buttons we load the specified data
+    
     /// <summary>
     /// When we click the "Watch Now" button in Unity we instantly play the Item we left on.
     /// </summary>
@@ -275,6 +296,7 @@ public class HomeScreenLoader : MonoBehaviour
     public void AddFeaturedCollectionToWatchList()
     {
         _featuredCollection.addedToWatchList = !_featuredCollection.addedToWatchList;
+        OnEnable();
     }
 
     /// <summary>

@@ -17,5 +17,6 @@ MonoBehaviour:
   location: Engelen
   year: 2023
   addedToWatchList: 0
+  startedWatching: 0
   seenCollection: 0
   mediaItem: {fileID: 11400000, guid: 8cff1501e94a4fb4498d8671bfc23292, type: 2}

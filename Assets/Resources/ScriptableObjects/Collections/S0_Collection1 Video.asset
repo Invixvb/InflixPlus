@@ -18,5 +18,6 @@ MonoBehaviour:
   location: Eindhoven
   year: 2010
   addedToWatchList: 0
+  startedWatching: 0
   seenCollection: 0
   mediaItem: {fileID: 11400000, guid: f27c67a447847094297e411f5b3b09b9, type: 2}
