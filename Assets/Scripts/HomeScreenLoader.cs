@@ -278,17 +278,6 @@ public class HomeScreenLoader : MonoBehaviour
         _currentDateText = null;
         _currentSliderValue = 0;
     }
-    
-    //TODO: Actually open the CollectionScreen with the clicked Collection when we click a RectItem
-    //TODO: When clicking buttons we load the specified data
-    
-    /// <summary>
-    /// When we click the "Watch Now" button in Unity we instantly play the Item we left on.
-    /// </summary>
-    public void WatchFeaturedCollection()
-    {
-        //TODO: Actually open the CollectionScreen with the selected featuredCollection
-    }
 
     /// <summary>
     /// When we click the "Add to Watchlist" button in Unity we set the FeaturedCollection addedToWatchList bool to the inverse of what it was before.
