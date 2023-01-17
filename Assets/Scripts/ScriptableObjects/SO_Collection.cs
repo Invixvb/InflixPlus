@@ -12,8 +12,8 @@ namespace ScriptableObjects
         public int year;
 
         [HideInInspector] public bool addedToWatchList;
-        [HideInInspector] public bool startedWatching;
-        [HideInInspector] public bool seenCollection;
+        [HideInInspector] public bool startedWatching; //TODO: Set this bool somewhere
+        [HideInInspector] public bool seenCollection; //TODO: Set this bool somewhere
 
         public SO_MediaItem mediaItem;
     }

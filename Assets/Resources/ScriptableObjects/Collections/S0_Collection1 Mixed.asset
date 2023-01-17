@@ -19,5 +19,6 @@ MonoBehaviour:
   location: Den Bosch
   year: 2022
   addedToWatchList: 0
+  startedWatching: 0
   seenCollection: 0
   mediaItem: {fileID: 11400000, guid: a6b01e330ced7d345b53d1b166b68e43, type: 2}
