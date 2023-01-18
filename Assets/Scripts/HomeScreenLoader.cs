@@ -105,12 +105,15 @@ public class HomeScreenLoader : MonoBehaviour
         {
             var selectedCollections = new List<SO_Collection> {collection};
             
+            // For every collection in the list
             for (var i = 0; i < selectedCollections.Count; i++)
             {
                 var currentItem = continueWatchingList[i];
 
+                // Get the GOs of the children
                 var childrenObjectList = currentItem.GetComponentsInChildren<Transform>(true).Select(c => c.gameObject).ToList();
 
+                // For every child in the list of children we get the UI components and change it accordingly
                 foreach (var child in childrenObjectList)
                 {
                     switch (child.name)
@@ -158,8 +161,10 @@ public class HomeScreenLoader : MonoBehaviour
             if (i >= StaticConfig.PublicConfig.currentUser.collectionsList.Count - 1)
                 return;
 
+            // Get the GOs of the children
             var childrenObjectList = currentItem.GetComponentsInChildren<Transform>(true).Select(c => c.gameObject).ToList();
 
+            // For every child in the list of children we get the UI components and change it accordingly
             foreach (var child in childrenObjectList)
             {
                 switch (child.name)
@@ -204,12 +209,15 @@ public class HomeScreenLoader : MonoBehaviour
         {
             var selectedCollections = new List<SO_Collection> {collection};
 
+            // For every collection in the list
             for (var i = 0; i < selectedCollections.Count; i++)
             {
                 var currentItem = reWatchList[i];
 
+                // Get the GOs of the children
                 var childrenObjectList = currentItem.GetComponentsInChildren<Transform>(true).Select(c => c.gameObject).ToList();
 
+                // For every child in the list of children we get the UI components and change it accordingly
                 foreach (var child in childrenObjectList)
                 {
                     switch (child.name)

@@ -9,7 +9,7 @@ using UnityEngine.Video;
 
 public static class MediaItemUploader
 {
-    public static readonly FirebaseStorage Storage = FirebaseStorage.DefaultInstance;
+    private static readonly FirebaseStorage Storage = FirebaseStorage.DefaultInstance;
 
     private static StorageReference _storageReference;
     

@@ -19,8 +19,6 @@ namespace ScriptableObjects
         [HideInInspector] public Vector2 resolutionSize;
 
         public VideoClip videoClip;
-
-        [HideInInspector] public bool seenVideoItem;
         
         private void OnEnable()
         {

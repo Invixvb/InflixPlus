@@ -31,11 +31,13 @@ public class CollectionsLoader : MonoBehaviour
             var collection = StaticConfig.PublicConfig.currentUser.collectionsList[i];
 
             var currentItem = buttonItemList[i];
-
+            
+            // Get all the Children GOs of the currentItem in the buttonItemList
             var childrenObjectList = currentItem.GetComponentsInChildren<Transform>(true)
                 .Select(c => c.gameObject)
                 .ToList();
 
+            // For every Child in the list we check if the child title is any of the selection, and then we react accordingly
             foreach (var child in childrenObjectList)
             {
                 switch (child.name)

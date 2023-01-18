@@ -14,19 +14,19 @@ public class WhosWatchingLoader : MonoBehaviour
 
     public List<SO_Account> soAccounts = new();
 
+    /// <summary>
+    /// Standard Unity Event.
+    /// Loads all the data into the WhosWatching screen UI.
+    /// </summary>
     private void Awake()
     {
         var user1 = soAccounts[0];
         var user2 = soAccounts[1];
-        
-        if (user1.userName != null) 
-            personText1.text = user1.userName;
-        if (user2.userName != null) 
-            personText2.text = user2.userName;
 
-        if (user1.userProfilePicture != null) 
-            personIcon1.sprite = user1.userProfilePicture;
-        if (user2.userProfilePicture != null) 
-            personIcon2.sprite = user2.userProfilePicture;
+        personText1.text = user1.userName;
+        personText2.text = user2.userName;
+
+        personIcon1.sprite = user1.userProfilePicture;
+        personIcon2.sprite = user2.userProfilePicture;
     }
 }

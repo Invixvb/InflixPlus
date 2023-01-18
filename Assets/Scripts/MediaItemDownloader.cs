@@ -5,6 +5,11 @@ using UnityEngine;
 
 public static class MediaItemDownloader
 {
+    /// <summary>
+    /// Downloading MediaItems from the Firebase Storage server into a temp file.
+    /// </summary>
+    /// <param name="mediaItemType">Type to download.</param>
+    /// <param name="storageReference">Reference to the file.</param>
     public static async Task DownloadMediaItem(MediaItemType mediaItemType, StorageReference storageReference)
     {
         // Create a temporary file path to download the file to

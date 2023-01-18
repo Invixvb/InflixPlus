@@ -27448,7 +27448,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 91859028}
         m_TargetAssemblyTypeName: CollectionScreenLoader, Assembly-CSharp
-        m_MethodName: AddFeaturedCollectionToWatchList
+        m_MethodName: AddCurrentCollectionToWatchList
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -15,8 +15,6 @@ namespace ScriptableObjects
         [HideInInspector] public Vector2 resolutionSize;
 
         public Texture2D texture;
-        
-        [HideInInspector] public bool seenPhotoItem;
 
         private void OnEnable()
         {
