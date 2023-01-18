@@ -6,7 +6,6 @@ using UnityEngine;
 public class CurrentSelectedCollection : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI titleText;
-
     
     /// <summary>
     /// Get the current selected Collection.

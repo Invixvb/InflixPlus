@@ -271,7 +271,7 @@ public class HomeScreenLoader : MonoBehaviour
         topImage1.sprite = null;
         topImage2.sprite = null;
         topImage3.sprite = null;
-        videoPlayer.clip = null;
+        if(videoPlayer != null) videoPlayer.clip = null;
         _currentHeaderImage = null;
         _currentTitleText = null;
         _currentItemText = null;
